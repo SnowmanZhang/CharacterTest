@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+{% load static %}
+    <link rel="icon" href="{% static 'dist/image/icon_snowman.ico' %}">
+
+    <title>气质测试|首页</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'dist/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{% static 'dist/css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'dist/css/navbar-static-top.css' %}" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="{% static 'dist/js/ie-emulation-modes-warning.js' %}"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h3>您的气质类型是 {{ result }}</h3>
+	{% for key,value in score_tree.items %}
+		<p>您的 {{ key }} 得分为 {{ value }}</p>
+	{% endfor %}
+        <p>胆汁质：直率、热情、具有快速的反应力，行动敏捷，情绪冲动，具有克服困难、坚忍不拔的意志，但不考虑是否成功，易爆发、狂热，不可抑制，具有外倾性，但若精力耗尽便会失去信心。
+矫正：着重发扬开朗、豪放、进取的特点。注意控制感情，培养耐心，自控能力，要谦虚，多听他人意见，沉着冷静，防止产生任性、粗暴、高傲的不良品质。</p>
+	<p>多血质：敏捷好动、善于交际、反应灵敏，在新环境里不拘束，在工作学习上精力充沛，且效率高，表现出机敏的工作能力，善于适应变化的新环境，在集体中心神愉快，朝气蓬勃，具有外倾性，使人对什么都感兴趣。但情感易变，缺乏持久力，这类人可以成为有效的活动家，领导家。
+矫正：发扬热情、活泼、机敏、灵活的品质，加强恒心的培养，行动不易轻率，三思而后行，防止产生自由散漫、见异思迁的感情。</p>
+	<p>黏液质：安静、稳重、沉着、沉默寡言、三思而行，生活中是坚持而稳重的工作者，严于遵守既定的生活秩序，工作制度，不为外因而分心，态度上持重，不易激动或转移注意力。
+矫正：着重发扬坚定、踏实、诚恳的优良品质，多参加运动，培养主动性，防止产生慎小偏微、因循守旧的品行。</p>
+	<p>抑郁质：情趣体验深刻，行动迟缓，往往为微不足道的事情动感情，具有高度的情趣，敏感性，对外部环境敏感，易产生幻想、胆小、孤僻、恐惧。
+矫正：着重发扬心细、机警、稳重的品质，加强主动性、积极性的培养，勇于面对挫折，提高自己的胆量，多参加活动，培养自信心，防止产生孤僻自卑的不良品行。</p>
+
+      </div>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'dist/js/jquery.min.js' %}"></script>
+    <script src="{% static 'dist/js/bootstrap.min.js' %}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{% static 'dist/js/ie10-viewport-bug-workaround.js' %}"></script>
+  </body>
+</html>

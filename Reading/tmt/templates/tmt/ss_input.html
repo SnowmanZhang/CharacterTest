@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+{% load static %}
+
+    <link rel="icon" href="{% static 'dist/image/icon_snowman.ico' %}">
+    <title>第 {{ pagenumber }} 题</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'dist/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{% static 'dist/css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'dist/css/jumbotron-narrow.css' %}" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="{% static 'dist/js/ie-emulation-modes-warning.js' %}"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+{% if s_question %}
+<form action="{% url 'tmt:testing' %}" method="post">	
+{% csrf_token %}
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="{% url 'tmt:submit' %}" class="btn btn-lg btn-success" >提前提交</a></li>
+            <li role="presentation" class="active"><button type="submit"  name="choice" id="choice0" class="btn btn-lg"  value="">跳过此题</button></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">性格测试</h3>
+      </div>
+
+
+{% ifnotequal pagenumber 61 %}
+      <div class="jumbotron">
+        <h3>{{ s_question.question_text }}</h3>
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-8">
+        	<p><button type="submit" name="choice" class="btn btn-lg btn-success"  id="choice1" value="1"/>非常符合</button></p>
+        </div><!-- /.col-lg-6 -->
+        <div class="col-lg-8">
+          	<p><button type="submit" name="choice" class="btn btn-lg btn-success"  id="choice2" value="2"/>比较符合</button></p>
+        </div><!-- /.col-lg-6 -->
+        <div class="col-lg-8">
+        	<p><button type="submit" name="choice" class="btn btn-lg btn-success"  id="choice3" value="3"/>不能确定</button></p>
+        </div><!-- /.col-lg-6 -->
+        <div class="col-lg-8">
+          	<p><button type="submit" name="choice" class="btn btn-lg btn-success"  id="choice4" value="4"/>较不符合</button></p>
+        </div><!-- /.col-lg-6 -->
+        <div class="col-lg-8">
+        	<p><button type="submit" name="choice" class="btn btn-lg btn-success"  id="choice5" value="5"/>完全不符</button></p>
+        </div><!-- /.col-lg-6 -->
+      </div><!-- /.row -->
+{% else %}
+	<div class="row">
+		<div class="col-lg-3">
+			<p><a name="choice" class="btn btn-lg btn-success" href="{% url 'tmt:submit' %}">提交</a></p>
+		</div>
+	</div>
+{% endifnotequal %}
+
+
+</form>
+{% endif %}
+
+      <footer class="footer">
+        <p>&copy; 2017 SnowmanZhang</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{% static 'dist/js/ie10-viewport-bug-workaround.js' %}"></script>
+  </body>
+</html>

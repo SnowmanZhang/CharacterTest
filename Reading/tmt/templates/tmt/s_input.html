@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>{{ s_question }}</title>
+</head>
+<body>
+{% if s_question %}
+<form action="{% url 'tmt:deal' s_question.id %}" method="post">	
+<strong>{{ s_question.question_text }}</strong><br />
+{% csrf_token %}
+<input type="radio" name="choice" id="choice1" value="1"/><label for="choice1">非常符合</label><br />
+<input type="radio" name="choice" id="choice2" value="2"/><label for="choice2">比较符合</label><br />
+<input type="radio" name="choice" id="choice3" value="3"/><label for="choice3">不确定</label><br />
+<input type="radio" name="choice" id="choice4" value="4"/><label for="choice4">比较不符合</label><br />
+<input type="radio" name="choice" id="choice5" value="5"/><label for="choice5">完全不符合</label><br />
+<input type="submit" value="Vote" />
+	 
+
+</form>
+{% endif %}
+
+</body>
+</html>
